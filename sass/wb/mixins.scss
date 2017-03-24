@@ -1,0 +1,116 @@
+// ===========================================================================
+// MIXINS
+// ===========================================================================
+
+// ------------------------
+// SELECTION
+// ------------------------
+
+// The 'wb-selection' mixin allows styling text selection.
+
+@mixin wb-selection {
+  ::-webkit-selection{ @content; }
+  ::-moz-selection{ @content; }
+  ::selection{ @content; }
+}
+
+// ------------------------
+// PLACEHOLDER
+// ------------------------
+
+// The 'wb-input-placeholder' mixin allows styling input placeholder.
+
+@mixin wb-input-placeholder {
+  &::-webkit-input-placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+}
+
+// ------------------------
+// CLEAR FLOAT
+// ------------------------
+
+// The 'wb-clear-float' mixin is useful for clearing floated children without
+// using the 'overflow: hidden' rule on the element.
+
+@mixin wb-clear-float() {
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+// ------------------------
+// ICON
+// ------------------------
+
+// The 'wb-icon' mixin adds the default styles for centering an
+// icon inside an element. You would probably want to use it
+// inside a pseudo element.
+
+@mixin wb-icon($icon-size: 14px, $icon-width: 1em, $icon-height: 1em, $font-name: WBIcons) {
+  display: block;
+  width: $icon-width;
+  height: $icon-height;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -0.5 * $icon-height;
+  margin-left: -0.5 * $icon-width;
+  speak: none;
+  font: normal #{$icon-size}/#{1} $font-name;
+  text-align: center;
+}
+
+// ------------------------
+// BLOCK
+// ------------------------
+
+// The 'wb-block' mixin creates vertical margins for
+// block elements and handles eliminating margins for
+// first/last elements.
+
+@mixin wb-block($margin-before: null, $margin-after: $margin-before) {
+  @if $margin-before != null {
+    display: block;
+    margin: $margin-before 0 $margin-after;
+
+    &:first-child { margin-top: 0; }
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
+// ------------------------
+// GRADIENT
+// ------------------------
+
+// The 'wb-gradient' mixin creates a gradient background.
+// It accepts two colors and an angle, $color-a, $color-b, $angle.
+
+@mixin wb-gradient($params...) {
+  $angle: 45deg;
+  $color-a: null;
+  $color-b: null;
+
+  @if type-of(nth($params, 1)) == 'number' {
+    $gradient: nth($wb-gradients, nth($params, 1));
+    $color-a: nth($gradient, 1);
+    $color-b: nth($gradient, 2);
+  } @else {
+    $color-a: nth($params, 1);
+    $color-b: nth($params, 2);
+  }
+
+  @if length($params) > 1 {
+    $last-param: nth($params, length($params));
+
+    @if type-of($last-param) == 'number' {
+      $angle: $last-param;
+    }
+  }
+
+  background: linear-gradient($angle, $color-a, $color-b);
+}
