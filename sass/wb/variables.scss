@@ -72,6 +72,14 @@ $wb-ease-in-snap                    : cubic-bezier(0.790, 0.005, 0.855, 0.520) !
 $wb-ease-out-snap                   : cubic-bezier(0.130, 0.330, 0.305, 1.000) !default;
 $wb-ease-in-out-snap                : cubic-bezier(0.790, 0.005, 0.305, 1.000) !default;
 
+$wb-ease-in-snappier                : cubic-bezier(0.850, 0.020, 0.850, 0.440) !default;
+$wb-ease-out-snappier               : cubic-bezier(0.150, 0.555, 0.150, 0.980) !default;
+$wb-ease-in-out-snappier            : cubic-bezier(0.850, 0.020, 0.150, 0.980) !default;
+
+$wb-ease-in-snappiest               : cubic-bezier(1.000, 0.000, 0.940, 0.500) !default;
+$wb-ease-out-snappiest              : cubic-bezier(0.055, 0.505, 0.000, 1.000) !default;
+$wb-ease-in-out-snappiest           : cubic-bezier(1.000, 0.000, 0.000, 1.000) !default;
+
 // ------------------------
 // FONTS
 // ------------------------
