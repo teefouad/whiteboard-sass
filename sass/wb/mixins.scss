@@ -9,9 +9,9 @@
 // The 'wb-selection' mixin allows styling text selection.
 
 @mixin wb-selection {
-  ::-webkit-selection{ @content; }
-  ::-moz-selection{ @content; }
-  ::selection{ @content; }
+  ::-webkit-selection { @content; }
+  ::-moz-selection { @content; }
+  ::selection { @content; }
 }
 
 // ------------------------
@@ -63,6 +63,25 @@
   speak: none;
   font: normal #{$icon-size}/#{1} $font-name;
   text-align: center;
+}
+
+// ---------------------------------
+// ARROW
+// ---------------------------------
+
+// The 'wb-arrow' mixin will add the basic styles required for creating
+// a css arrow tip (triangle) using a pseudo element. You will need to
+// define the direction of the arrow using subsequent CSS.
+
+@mixin wb-arrow($size) {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: $size solid transparent;
 }
 
 // ------------------------
